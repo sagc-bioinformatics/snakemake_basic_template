@@ -24,19 +24,25 @@ snakemake \
 ```bash
 SNAKEMAKE_VERSION='6.7.0'
 
+# Create an empty environment
 conda create \
   --yes \
   --name "snakemake_v${SNAKEMAKE_VERSION}"
 
+# Activate the new, empty environment
 conda activate \
   "snakemake_v${SNAKEMAKE_VERSION}"
 
+# Install mamba - a faster/better version of the conda executable
 conda install \
   --yes \
   --channel conda-forge \
   mamba
 
+# Install Snakemake
 mamba install \
   --yes \
+  --channel bioconda \
+  --channel conda-forge \
   snakemake=${SNAKEMAKE_VERSION}
 ```
